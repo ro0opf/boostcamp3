@@ -68,9 +68,7 @@ class MainController(val bd: ActivityMainBinding, val context: Context) {
                 val body = response?.body()?.string()
                 Log.e(TAG,"Success to execute request : $body")
                 val gson = GsonBuilder().create()
-                //아! 이렇게 하는구나
                 val homefeed = gson.fromJson(body, Homefeed::class.java)
-                //어답터를 연결하자. 메인쓰레드 변경하기 위해 이 메소드 사용
                 mainActivity.runOnUiThread{
                     bd.animationView.cancelAnimation()
                     bd.animationView.visibility = View.INVISIBLE
